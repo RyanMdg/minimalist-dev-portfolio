@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import { FadeIn } from "./FadeIn";
 
 export function Footer() {
   return (
@@ -6,6 +7,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-10">
           {/* Left — brand + tagline */}
+          <FadeIn direction="left">
           <div>
             <div className="flex items-center gap-3 mb-3">
               <span className="inline-flex items-center justify-center w-9 h-9 bg-foreground text-background text-sm font-bold rounded-sm">
@@ -20,8 +22,10 @@ export function Footer() {
               © {new Date().getFullYear()} {site.name} — All rights reserved.
             </p>
           </div>
+          </FadeIn>
 
           {/* Right — social circles */}
+          <FadeIn direction="right" delay={0.1}>
           <div className="flex flex-col items-start md:items-end gap-4">
             <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Find me</span>
             <div className="flex items-center gap-3">
@@ -61,6 +65,7 @@ export function Footer() {
               </a>
             </div>
           </div>
+          </FadeIn>
         </div>
       </div>
     </footer>

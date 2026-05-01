@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import { z } from "zod";
 import { site } from "@/lib/site";
 import { toast } from "sonner";
+import { FadeIn } from "./FadeIn";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -53,9 +54,16 @@ export function Contact() {
     }
   }
 
+  function handleStampClick() {
+    setShowForm(true);
+    setTimeout(() => {
+      document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" });
+    }, 50);
+  }
+
   return (
     <section id="contact" className="border-t border-border">
-      {/* ── CTA block ── */}
+      {/* CTA block */}
       <div className="relative overflow-hidden py-28 md:py-40 flex flex-col items-center justify-center text-center px-6">
         {/* Scribble left */}
         <svg
@@ -87,47 +95,31 @@ export function Contact() {
           <path d="M30 60 C70 45, 140 80, 150 120 C160 155, 110 165, 130 185" />
         </svg>
 
-        {/* Heading */}
-        <h2 className="relative font-display text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] max-w-2xl">
-          Anything in Mind?<br />Let's Talk
-        </h2>
+        <FadeIn>
+          <h2 className="relative font-display text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] max-w-2xl">
+            Anything in Mind?
+            <br />
+            Let&apos;s Talk
+          </h2>
+        </FadeIn>
 
-        {/* Stamp badge — click to reveal form */}
-        <button
-          onClick={() => {
-            setShowForm(true);
-            setTimeout(() => {
-              document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" });
-            }, 50);
-          }}
-          aria-label="Open contact form"
-          className="group mt-14 relative flex items-center justify-center w-36 h-36 focus:outline-none"
-        >
-          {/* Serrated spinning ring */}
-          <svg
-            className="absolute inset-0 w-full h-full text-foreground animate-[spin_22s_linear_infinite] group-hover:paused"
-            viewBox="0 0 144 144"
-            fill="currentColor"
+        <FadeIn delay={0.2}>
+          <button
+            onClick={handleStampClick}
+            aria-label="Open contact form"
+            className="group mt-14 relative flex items-center justify-center w-36 h-36 focus:outline-none"
           >
-            {/* Build a gear/stamp ring using polygon */}
-            <path d="
-              M72,8 L76,16 L84,12 L85,21 L93,20 L91,29 L99,31 L94,39
-              L102,44 L94,49 L99,57 L91,59 L93,68 L85,67 L84,76 L76,72
-              L72,80 L68,72 L60,76 L59,67 L51,68 L53,59 L45,57 L50,49
-              L42,44 L50,39 L45,31 L53,29 L51,20 L59,21 L60,12 L68,16 Z
-            " />
-          </svg>
-          {/* Inner filled circle */}
-          <span className="relative z-10 flex flex-col items-center justify-center w-22 h-22 rounded-full bg-foreground text-background text-center leading-snug transition-transform duration-200 group-hover:scale-[0.96]">
-            <span className="text-[10px] font-bold uppercase tracking-wider">I'M</span>
-            <span className="text-[10px] font-bold uppercase tracking-wider">READY TO</span>
-            <span className="text-[10px] font-bold uppercase tracking-wider">TALK</span>
-            <span className="mt-0.5 text-sm font-light">↗</span>
-          </span>
-        </button>
+            <span className="relative z-10 flex flex-col items-center justify-center w-22 h-22 rounded-full bg-foreground text-background text-center leading-snug transition-transform duration-200 group-hover:scale-[0.96]">
+              <span className="text-[10px] font-bold uppercase tracking-wider">I&apos;M</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider">READY TO</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider">TALK</span>
+              <span className="mt-0.5 text-sm font-light">↗</span>
+            </span>
+          </button>
+        </FadeIn>
       </div>
 
-      {/* ── Contact form — revealed when stamp is clicked ── */}
+      {/* Contact form — revealed when stamp is clicked */}
       <div
         id="contact-form"
         style={{ maxHeight: showForm ? "900px" : "0px" }}
@@ -137,9 +129,13 @@ export function Contact() {
         <div className="border-t border-border py-16 md:py-24">
           <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-12 gap-12">
             <div className="md:col-span-5">
-              <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">04 — Contact</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+                04 — Contact
+              </p>
               <h3 className="mt-4 font-display text-3xl md:text-4xl font-semibold tracking-tight leading-[1.1]">
-                Let's build<br />something good.
+                Let&apos;s build
+                <br />
+                something good.
               </h3>
               <p className="mt-6 text-muted-foreground max-w-md text-sm leading-relaxed">
                 Have a project, a role, or just want to say hi? Drop a message — I read everything.
