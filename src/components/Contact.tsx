@@ -55,11 +55,10 @@ export function Contact() {
     <section id="contact" className="py-24 md:py-32 border-t border-border">
       <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-12 gap-12">
         <div className="md:col-span-5">
-          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-            04 — Contact
-          </p>
           <h2 className="mt-4 font-display text-4xl md:text-6xl font-semibold tracking-tight leading-[1]">
-            Let's build<br />something good.
+            Let's build
+            <br />
+            something good.
           </h2>
           <p className="mt-6 text-muted-foreground max-w-md">
             Have a project, a role, or just want to say hi? Drop a message — I read everything.
@@ -72,12 +71,7 @@ export function Contact() {
           </a>
         </div>
 
-        <form
-          ref={formRef}
-          onSubmit={onSubmit}
-          className="md:col-span-7 space-y-6"
-          noValidate
-        >
+        <form ref={formRef} onSubmit={onSubmit} className="md:col-span-7 space-y-6" noValidate>
           <Field label="Name" name="name" error={errors.name}>
             <input
               name="name"
@@ -85,7 +79,7 @@ export function Contact() {
               maxLength={100}
               autoComplete="name"
               className="w-full bg-transparent border-b border-border focus:border-foreground outline-none py-3 text-foreground placeholder:text-muted-foreground transition-colors"
-              placeholder="Jane Doe"
+              placeholder="Samantha Eunice"
             />
           </Field>
           <Field label="Email" name="email" error={errors.email}>
@@ -95,7 +89,7 @@ export function Contact() {
               maxLength={255}
               autoComplete="email"
               className="w-full bg-transparent border-b border-border focus:border-foreground outline-none py-3 text-foreground placeholder:text-muted-foreground transition-colors"
-              placeholder="jane@company.com"
+              placeholder="Samantha@company.com"
             />
           </Field>
           <Field label="Message" name="message" error={errors.message}>
@@ -135,10 +129,7 @@ function Field({
 }) {
   return (
     <div>
-      <label
-        htmlFor={name}
-        className="text-xs uppercase tracking-[0.2em] text-muted-foreground"
-      >
+      <label htmlFor={name} className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
         {label}
       </label>
       <div className="mt-1">{children}</div>

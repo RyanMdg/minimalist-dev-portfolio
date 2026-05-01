@@ -1,13 +1,12 @@
 import { experience } from "@/lib/site";
+import ProfileTwo from "../../public/profile_2.png";
 
 export function Experience() {
   return (
     <section id="experience" className="py-24 md:py-32 border-t border-border">
-      <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-12 gap-12">
-        <div className="md:col-span-4">
-          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-            03 — Experience
-          </p>
+      <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-16 gap-20">
+        <div className="md:col-span-8 flex flex-col justify-center">
+          <img src={ProfileTwo} alt="MysecondProfile" />
         </div>
         <div className="md:col-span-8">
           <h2 className="font-display text-3xl md:text-5xl font-semibold tracking-tight mb-12">
@@ -21,8 +20,7 @@ export function Experience() {
                   {e.period}
                 </p>
                 <h3 className="font-display text-2xl font-medium tracking-tight">
-                  {e.role}{" "}
-                  <span className="text-muted-foreground font-light">— {e.company}</span>
+                  {e.role} <span className="text-muted-foreground font-light">— {e.company}</span>
                 </h3>
                 <p className="mt-3 text-muted-foreground max-w-2xl leading-relaxed">
                   {e.description}
